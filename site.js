@@ -67,6 +67,15 @@ function initReveal() {
   revealEls.forEach(el => io.observe(el));
 }
 
+/* ---- Events: hide a [data-show-until="YYYY-MM-DD"] section once that day is over ---- */
+function hidePastEvents() {
+  const now = new Date();
+  document.querySelectorAll('[data-show-until]').forEach(el => {
+    const end = new Date(el.dataset.showUntil + 'T23:59:59+01:00'); // end of that day, Nigeria time
+    if (!isNaN(end) && now > end) el.classList.add('is-past');
+  });
+}
+
 /* ---- YouTube cards: fill thumbnail + link from data-youtube="..." ---- */
 function youtubeId(url) {
   if (!url) return null;
@@ -150,6 +159,7 @@ function initContactForm() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  hidePastEvents();
   initVideoCards();
   initContactForm();
   await Promise.all([

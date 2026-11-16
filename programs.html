@@ -41,7 +41,44 @@
     </div>
   </section>
 
-  <section style="padding-top:10px;">
+  <!--
+    UPCOMING EVENT
+    --------------
+    This section hides itself automatically the day after the date in
+    data-show-until="YYYY-MM-DD". For the next workshop: swap the flyer in assets/,
+    update the text and the registration link, and change that date.
+    The same block is on index.html and programs.html.
+  -->
+  <section class="event-section" data-show-until="2026-11-29" aria-labelledby="event-title-programs" style="padding-top:10px;">
+    <div class="wrap">
+      <div class="event-card reveal">
+        <a class="event-flyer" href="assets/workshop-flyer.jpg" target="_blank" rel="noopener" aria-label="Open the full workshop flyer">
+          <picture>
+            <source srcset="assets/workshop-flyer.webp" type="image/webp">
+            <img src="assets/workshop-flyer.jpg" alt="Flyer: Introducing Girls to Tech Through AI — an AI-powered technology awareness workshop on 29 November 2026 at 21st Century Entrepreneurs Hub, in collaboration with M.I Tech NG Hub. Free, limited to 30 people." width="1122" height="1280" loading="lazy">
+          </picture>
+        </a>
+        <div class="event-body">
+          <span class="eyebrow">Upcoming workshop · Free</span>
+          <h2 id="event-title-programs">Introducing Girls to Tech Through AI</h2>
+          <p class="event-lede">An AI-powered technology awareness workshop — hands-on AI sessions, tech talks, career insights, creative demos and Q&amp;A. Interactive from start to finish, not a lecture.</p>
+          <ul class="event-facts">
+            <li><b>Date</b><span>Sunday 29 November 2026</span></li>
+            <li><b>Venue</b><span>21st Century Entrepreneurs Hub</span></li>
+            <li><b>Facilitator</b><span>Mustapha Ibrahim, Founder, M.I Tech NG Hub</span></li>
+            <li><b>Places</b><span>Limited to 30 girls — register early</span></li>
+          </ul>
+          <div class="event-actions">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd92wsWzAQs8mtFAXVKc2jyDBHB9frYqv66OzIlmKJrQq9clQ/viewform" target="_blank" rel="noopener">Register now</a>
+            <a class="btn btn-ghost" href="https://wa.me/2347065852323" target="_blank" rel="noopener">WhatsApp for enquiries</a>
+          </div>
+          <p class="event-partner">In collaboration with M.I Tech NG Hub</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Rising Techies · Girls in Tech School Outreach · Sokoto</span>
@@ -105,7 +142,7 @@
       <div class="path-card reveal" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.14); padding:44px;">
         <span class="tag" style="color:var(--text-on-ink-soft);">Beyond these skills</span>
         <h3 style="color:#fff; font-size:24px; margin:10px 0 12px;">Open Pathway</h3>
-        <p style="color:var(--text-on-ink-soft); max-width:60ch;">If a participant wants training in something we don't yet offer, they can request it. Rising Techies commits to sourcing that training and we track every request to spot patterns that might one day become a new in-house skill.</p>
+        <p style="color:var(--text-on-ink-soft); max-width:60ch;">If a participant wants training in something we don't yet offer, they can request it. Rising Techies commits to sourcing that training within two weeks — and we track every request to spot patterns that might one day become a new in-house skill.</p>
       </div>
     </div>
   </section>
