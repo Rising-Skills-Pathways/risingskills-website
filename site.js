@@ -39,9 +39,14 @@ function initNavToggle() {
     const open = links.classList.contains('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => links.classList.remove('open'))
-  );
+  const close = () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  // close with the Escape key, or when the window is widened back to desktop
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  window.matchMedia('(min-width: 821px)').addEventListener('change', e => { if (e.matches) close(); });
 }
 
 function initReveal() {
