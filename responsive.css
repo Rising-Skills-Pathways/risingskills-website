@@ -1,0 +1,132 @@
+/* ============================================================
+   RISING SKILLS PATHWAYS INITIATIVE — responsive.css
+   All breakpoints + motion/contrast accessibility preferences
+   live here, separate from styles.css, so layout and base design
+   stay easy to tell apart when editing.
+
+   Breakpoints used:
+     1400px  large desktop — cap hero art / cycle from stretching
+     980px   tablet landscape
+     900px   tablet
+     820px   nav switches to mobile menu
+     800px   two-column cards stack
+     700px   small tablet / large phone
+     560px   phone
+   ============================================================ */
+
+/* -------------------- accessibility: motion & contrast -------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; } /* content must not stay hidden if animation is skipped */
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-soft: #2E3A52;
+    --text-on-ink-soft: #E4EAF5;
+    --line: #9AA6B5;
+  }
+  .btn-ghost { border-width: 3px; }
+}
+
+/* -------------------- large desktop: keep line lengths and art in check -------------------- */
+@media (min-width: 1400px) {
+  .wrap { max-width: 1280px; }
+  .hero-art { max-width: 520px; margin-left: auto; }
+}
+
+/* -------------------- ≤980px: cycle path loses its connector lines -------------------- */
+@media (max-width: 980px) {
+  .cycle { grid-template-columns: 1fr 1fr; }
+  .cycle-step:not(:last-child)::after { display: none; }
+}
+
+/* -------------------- ≤900px: hero, stats, values, tracks, story, contact stack -------------------- */
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 38px; }
+  .hero-art { order: -1; max-width: 340px; margin: 0 auto; }
+  .hero-photo { max-width: 560px; }
+
+  .values-grid { grid-template-columns: 1fr; }
+  .track-grid { grid-template-columns: 1fr; }
+  .story-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+}
+
+/* -------------------- ≤820px: nav collapses to a mobile menu -------------------- */
+@media (max-width: 820px) {
+  .nav-links {
+    position: fixed;
+    inset: 62px 0 0 0;
+    background: var(--paper);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 28px;
+    gap: 20px;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    border-top: 1px solid var(--line);
+    overflow-y: auto;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-toggle { display: block; }
+  .nav-links a { font-size: 17px; width: 100%; padding: 10px 0; }
+  .nav-cta { width: 100%; justify-content: center; }
+}
+
+/* -------------------- ≤800px: two-up cards stack -------------------- */
+@media (max-width: 800px) {
+  .path-grid { grid-template-columns: 1fr; }
+}
+
+/* -------------------- ≤700px: stat strip goes 2x2, series items stack -------------------- */
+@media (max-width: 700px) {
+  .stat-strip .wrap { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: none; }
+  .series-item { grid-template-columns: 1fr; text-align: left; }
+}
+
+/* -------------------- ≤560px: single-column cycle, tightened type & spacing -------------------- */
+@media (max-width: 560px) {
+  .cycle { grid-template-columns: 1fr; }
+  .gallery-grid, .gallery-grid.two-up { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px; }
+  section { padding: 56px 0; }
+
+  .hero { padding: 44px 0 40px; }
+  .hero h1 { font-size: 30px; }
+  .hero p.lede { font-size: 16.5px; }
+  .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+  .page-hero h1 { font-size: 30px; }
+  .section-head h2 { font-size: 26px; }
+
+  .stat-strip .wrap { grid-template-columns: 1fr 1fr; }
+  .stat { padding: 20px 16px; }
+
+  .footer-top { flex-direction: column; }
+  .footer-links { gap: 28px; }
+}
+
+/* -------------------- print: strip color chrome, keep content readable -------------------- */
+@media print {
+  .site-header, .nav-toggle, .bar-strip, .hero-art, footer.site-footer, .skip-link { display: none; }
+  body { background: #fff; color: #000; }
+  a { text-decoration: underline; }
+  section { padding: 20px 0; }
+}
